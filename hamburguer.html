@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Navbar Hamburger Menu</title>
+<link rel="stylesheet" href="./nav.css">
+</head>
+<body>
+<header>
+  <div class="container">
+    <nav role="navigation" aria-label="Main navigation">
+      <a href="#" class="logo" aria-label="Logo">Brand</a>
+
+      <input type="checkbox" id="menu-toggle" aria-controls="primary-menu" aria-expanded="false" />
+      <label class="hamburger" for="menu-toggle" aria-label="Toggle menu" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <div class="nav-links" id="primary-menu">
+        <a href="#home" tabindex="0">Home</a>
+        <a href="#about" tabindex="0">About</a>
+        <a href="#services" tabindex="0">Services</a>
+        <a href="#contact" tabindex="0">Contact</a>
+      </div>
+    </nav>
+  </div>
+</header>
+</body>
+</html>
+
