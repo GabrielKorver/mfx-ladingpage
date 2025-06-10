@@ -13,7 +13,7 @@
   header {
     width: 100%;
     height: 16rem;
-    position: sticky;
+    position: relative;
     top: 0;
     background: #ffffff;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
@@ -114,49 +114,89 @@
     margin-bottom: 0;
   }
 
-  /* Responsive for small screens */
   @media (max-width: 1024px) {
-    .nav-links {
-      position: fixed;
-      top: 60px;
-      right: 0;
-      background: #ffffffcc;
-      backdrop-filter: saturate(180%) blur(12px);
-      width: 200px;
-      height: calc(100vh - 60px);
-      flex-direction: column;
-      padding: 2rem 1.5rem;
-      gap: 1.5rem;
-      box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
-      border-radius: 0 0 0 12px;
-      transform: translateX(100%);
-      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      font-weight: 700;
-      font-size: 1.1rem;
-    }
 
-    /* Show the nav-menu if checkbox is checked */
-    #menu-toggle:checked+.hamburger+.nav-links {
-      transform: translateX(0);
-    }
-
-    .hamburger {
+    .container nav {
       display: flex;
+      height: 80px;
     }
-    .bn {
-      display: none;
-    }
+
+
+  /* Nav menu panel */
+  .nav-links {
+    position: fixed;
+    top: 0; /* stick to top */
+    right: 0;
+    background: #ffffffcc;
+    backdrop-filter: saturate(180%) blur(12px);
+    width: 200px;
+    height: 100vh;
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+    gap: 1.5rem;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 0 12px;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    font-weight: 700;
+    font-size: 1.1rem;
+    z-index: 90;
   }
 
-  /* Animate hamburger to X on open */
-  #menu-toggle:checked+.hamburger span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 5px);
+  /* Show nav menu when checked */
+  #menu-toggle:checked + .hamburger + .nav-links {
+    transform: translateX(0);
   }
 
-  #menu-toggle:checked+.hamburger span:nth-child(2) {
-    opacity: 0;
+  /* Hamburger icon styling */
+  .hamburger {
+    position: fixed;
+    top: 0;
+    left: 1rem; /* slight inset from left edge */
+    height: 60px;
+    width: 48px; /* reasonable width to comfortably click */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    border-radius: 0 0 0.75rem 0.75rem; /* subtle rounded bottom corners */
+    box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
+    cursor: pointer;
+    z-index: 100; /* above nav-links */
+    padding: 0.5rem 0;
+    transition: background-color 0.3s ease;
+  }
+  .hamburger:hover {
+    background-color: #f3f4f6; /* subtle hover background */
   }
 
-  #menu-toggle:checked+.hamburger span:nth-child(3) {
-    transform: rotate(-45deg) translate(5px, -5px);
+  .bn {
+    display: none;
   }
+
+  /* Hamburger spans (lines) styling */
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2.5px;
+    background-color: #333;
+    border-radius: 2px;
+    margin: 4px 0;
+    transition: all 0.3s ease;
+  }
+}
+
+/* Hamburger animation to X */
+#menu-toggle:checked + .hamburger span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+#menu-toggle:checked + .hamburger span:nth-child(2) {
+  opacity: 0;
+}
+
+#menu-toggle:checked + .hamburger span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
