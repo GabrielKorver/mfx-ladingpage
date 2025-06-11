@@ -5,10 +5,30 @@
    --color-bg: #ffffff;
    --color-text: #5D5D5D;
    --color-primary: #374151;
-   --color-secondary:#9747ff;
+   --color-secondary: #9747ff;
    --color-accent: #ebe3e3;
  }
 
+ [data-theme="dark"] {
+   --color-bg: #121212;
+   --color-text: #e5e7eb;
+   --color-accent: #8b5cf6;
+ }
+
+ button.theme-toggle-btn {
+   font-family: 'Material Symbols Outlined';
+   font-size: 48px;
+   color: var(--color-accent);
+   background: none;
+   border: none;
+   cursor: pointer;
+   transition: color var(--transition);
+ }
+
+ button.theme-toggle-btn:focus {
+   outline: 2px solid var(--color-accent);
+   outline-offset: 4px;
+ }
 
  * {
    margin: 0;
@@ -76,7 +96,6 @@
        font-size: 20px;
 
      }
-
 
 
 
@@ -151,7 +170,7 @@
 
      h3 {
        text-align: start;
-       color:var(--color-secondary);
+       color: var(--color-secondary);
        font-size: 20px;
      }
 

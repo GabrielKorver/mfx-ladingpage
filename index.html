@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br" data-theme="light">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>MFX PROJECT</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -22,19 +24,20 @@
         <div class="nav-links">
           <a href="#home" tabindex="0">Home</a>
           <a href="#features" tabindex="0">Features</a>
-          <a href="#pricing" tabindex="0">Pricing</a>
           <a href="#about" tabindex="0">About</a>
           <a href="#contact" tabindex="0">Contact</a>
+          <button aria-label="Alternar tema claro/escuro" class="theme-toggle-btn" id="themeToggle"
+            title="Alternar Tema">dark_mode</button>
         </div>
 
         <div class="img-banner">
-          <img src="./img/Banner novo.png" alt="imagem-banner">
+          <img src="./img/Training-Institute-34.png" alt="imagem-banner">
         </div>
 
       </nav>
 
-      <div class="degrade" ></div>
-      
+      <div class="degrade"></div>
+
     </div>
   </header>
 
@@ -105,6 +108,32 @@
     <a href=""><img src="img/logo-linkedin.png" alt="icone linkedin"></a>
     <a href=""><img src="img/logo-Be.png" alt="icone behance"></a>
   </footer>
+
+   <script>
+    const themeToggleBtn = document.getElementById('themeToggle');
+    const rootElement = document.documentElement;
+
+    // Load saved theme from localStorage
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      rootElement.setAttribute('data-theme', savedTheme);
+      updateToggleButtonIcon(savedTheme);
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+      const currentTheme = rootElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+      rootElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateToggleButtonIcon(newTheme);
+    });
+
+    function updateToggleButtonIcon(theme) {
+      // Material icon names: dark_mode, light_mode
+      themeToggleBtn.textContent = theme === 'light' ? 'dark_mode' : 'light_mode';
+    }
+  </script>
+
 </body>
 
 </html>
