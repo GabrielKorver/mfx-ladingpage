@@ -1,0 +1,150 @@
+/* Header & Nav */
+  header {
+    padding: 0px;
+    height: auto;
+    background: var(--color-bg);
+    box-shadow: 0 1px 4px rgb(0 0 0 / 0.1);
+    position: sticky; /*Muda o modela da navbar*/
+    top: 0;
+    z-index: 10;
+
+    .img-banner img {
+      width: 49rem;
+    }
+
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: auto;
+  }
+
+   .degrade {
+        width: 100%;
+        height: 1rem;
+        background: linear-gradient(75deg, rgba(123, 53, 214, 1) 0%, rgba(151, 71, 255, 1) 30%, rgba(255, 178, 71, 1) 53%, rgba(255, 255, 255, 1) 80%);
+        ;
+    }
+
+  /* Hamburger menu styles */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 24px;
+    height: 22px;
+    cursor: pointer;
+  }
+  .hamburger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: var(--color-secondary);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+
+  /* Navigation links */
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: var(--color-secondary);
+    font-weight: 500;
+    transition: color 0.3s ease;
+    font-size: 1rem;
+    position: relative; /* Required for absolute positioning of the pseudo-element */
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -3px; /* Adjust as needed to position the line */
+    left: 0;
+    width: 0;
+    height: 2px; /* Adjust line thickness */
+    background-color: var(--color-secondary); /* Line color */
+    transition: width 0.3s ease; /* Transition for the width */
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+    color: var(--color-accent);
+    outline: none;
+}
+
+.nav-links a:hover::after,
+.nav-links a:focus::after {
+    width: 100%; /* Line fills the entire width on hover */
+}
+
+  
+
+  /* Responsive Hamburger - use checkbox hack */
+  #menu-toggle {
+    display: none;
+  }
+
+  /* When menu toggle is checked, animate hamburger and show menu */
+  #menu-toggle:checked + .hamburger span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+  #menu-toggle:checked + .hamburger span:nth-child(2) {
+    opacity: 0;
+  }
+  #menu-toggle:checked + .hamburger span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  /* Mobile menu styles */
+  @media (max-width: 768px) {
+
+    nav {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 10PX;
+      height: 100px;
+    }
+    
+
+    .img-banner img {
+      display: none;
+    }
+
+    .hamburger {
+      display: flex;
+    }
+
+    .nav-links {
+      position: fixed;
+      top:0; /*controla a altura da navegação*/
+      right: 0;
+      height: calc(100vh - 64px);
+      width: 250px;
+      background: var(--color-bg);
+      flex-direction: column;
+      padding: 2rem 1.5rem;
+      box-shadow: -4px 0 12px rgb(0 0 0 / 0.1);
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      border-radius: 0 0 0 0.75rem;
+      overflow-y: auto;
+      z-index: 15;
+    }
+
+    #menu-toggle:checked ~ .nav-links {
+      transform: translateX(0);
+    }
+
+    .nav-links a {
+      font-size: 1.25rem;
+      margin-bottom: 1.5rem;
+      color: var(--color-primary);
+    }
+  }
